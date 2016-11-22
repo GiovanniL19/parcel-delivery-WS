@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+ <definitions 
+ xmlns="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+ xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" name="main" targetNamespace="http://giovannilenguito.co.uk/" xmlns:tns="http://giovannilenguito.co.uk/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702" 
+ >
+    <message name="getParcel"/>
+    <message name="getParcelResponse"/>
+    <message name="getUsers"/>
+    <message name="getUsersResponse"/>
+    <message name="getUser"/>
+    <message name="getUserResponse"/>
+    <message name="getCustomerParcels"/>
+    <message name="getCustomerParcelsResponse"/>
+    <message name="getDriverParcels"/>
+    <message name="getDriverParcelsResponse"/>
+    <message name="getUserByUsername"/>
+    <message name="getUserByUsernameResponse"/>
+    <portType name="PDS">
+        <operation name="getParcel">
+            <input message="tns:getParcel"/>
+            <output message="tns:getParcelResponse"/>
+        </operation>
+        <operation name="getUsers">
+            <input message="tns:getUsers"/>
+            <output message="tns:getUsersResponse"/>
+        </operation>
+        <operation name="getUser">
+            <input message="tns:getUser"/>
+            <output message="tns:getUserResponse"/>
+        </operation>
+        <operation name="getCustomerParcels">
+            <input message="tns:getCustomerParcels"/>
+            <output message="tns:getCustomerParcelsResponse"/>
+        </operation>
+        <operation name="getDriverParcels">
+            <input message="tns:getDriverParcels"/>
+            <output message="tns:getDriverParcelsResponse"/>
+        </operation>
+        <operation name="getUserByUsername">
+            <input message="tns:getUserByUsername"/>
+            <output message="tns:getUserByUsernameResponse"/>
+        </operation>
+    </portType>
+    <binding name="PDSPortBinding" type="tns:PDS">
+        <operation name="getParcel">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getUsers">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getUser">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getCustomerParcels">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getDriverParcels">
+            <input/>
+            <output/>
+        </operation>
+        <operation name="getUserByUsername">
+            <input/>
+            <output/>
+        </operation>
+    </binding>
+    <service name="main">
+        <port name="PDSPort" binding="tns:PDSPortBinding"/>
+    </service>
+    <wsp:Policy wsu:Id="PDSPortBinding_getUserByUsername_Input_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+    <wsp:Policy wsu:Id="PDSPortBinding_getUserByUsername_Output_Policy">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:EncryptedParts>
+                    <sp:Body/>
+                </sp:EncryptedParts>
+                <sp:SignedParts>
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>

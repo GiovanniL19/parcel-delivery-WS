@@ -113,8 +113,23 @@ public class PDS {
      */
     @WebMethod(operationName = "getUser")
     public String getUser(@WebParam(name = "id") int id, @WebParam(name = "method") String method) {
-        //TODO write your implementation code here:
-        return null;
+        return  "<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
+                "  <user>" +
+                "       <id>2</id>" +
+                "       <type>Customer</type>" +
+                "       <username>CharlotteD</username>" +
+                "       <password>123</password>" +
+                "       <email>char@gmail.com</email>" +
+                "       <fullName>Charlotte D</fullName>" +
+                "       <contactNumber>01234567890</contactNumber>" +
+                "       <address>" +
+                "          <lineOne>1 Close</lineOne>" +
+                "          <lineTwo></lineTwo>" +
+                "          <city>City One</city>" +
+                "          <postcode>CL0 5ER</postcode>" +
+                "          <country>United Kingdom</country>" +
+                "       </address>" +
+                "  </user>";
     }
 
     /**
@@ -134,4 +149,39 @@ public class PDS {
         //TODO write your implementation code here:
         return null;
     }
+
+    /**
+     * Web service operation
+     */
+    @WebMethod(operationName = "getUserByUsername")
+    public String getUserByUsername(@WebParam(name = "username") String username) {
+        return "<user><id>2</id><type>Customer</type><username>CharlotteD</username><password>123</password><email>char@gmail.com</email><fullName>Charlotte D</fullName><contactNumber>01234567890</contactNumber><address><lineOne>1 Close</lineOne><lineTwo></lineTwo><city>City One</city><postcode>CL0 5ER</postcode><country>United Kingdom</country></address></user>";
+        /*
+        try{
+            //Set the dbFactory
+            DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+            //Create Document Builder
+            DocumentBuilder documentBuilder = dbFactory.newDocumentBuilder();
+            //Set up document
+            org.w3c.dom.Document document = documentBuilder.newDocument();
+            
+            //Create root element
+            Element rootE = document.createElement("user");
+            document.appendChild(rootE);
+            
+            //Create elements inside of root (user)
+            Element id = document.createElement("id");
+            id.setNodeValue("0");
+            rootE.appendChild(id);
+            
+            return response;
+            
+        }catch(ParserConfigurationException | DOMException e){
+            System.out.println("ERROR");
+            e.printStackTrace();
+            return null;
+        }
+        */
+    }
+    
 }

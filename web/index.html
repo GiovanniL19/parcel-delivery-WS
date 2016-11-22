@@ -68,7 +68,7 @@ L010516C
     <body>
         <div class="container">
             <h1>Parcel Delivery System Web Service (PDS WSDL)</h1>
-            <h3>The latest WSDL may be found at <a href="http://localhost:8080/main/PDS?WSDL">http://localhost:8080/main/PDS?WSDL</a></h3>
+            <h3>The latest WSDL may be found at <a href="http://10.205.205.198:8080/main/PDS?WSDL">http://10.205.205.198:8080/main/PDS?WSDL</a></h3>
             <br>
             <h4>Supported Operations</h4>
             <ul>
@@ -104,6 +104,24 @@ L010516C
                             <ul>
                                 <li class="no-border"><i>id*</i>(int) user will be returned by its id</li>
                                 <li class="no-border"><i>method</i>(string, "XML" or "JSON", or "NULL") returns either XML or JSON, NULL will default to XML</li>
+                            </ul>
+                        </p>
+                        <h5>Response</h5>
+                        <p>User by id returned as method chosen (XML or JSON)</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="accordion"><h2><i>getUserByUsername</i></h2></button>
+                    <div class="panel">
+                        <h5>Description</h5>
+                        <p>
+                            Returns user by username (drivers or customers)
+                        </p>
+                        <h5>Parameters</h5>
+                        <p>
+                            All parameters must be supplied, but may be null. Parameters that may be null are marked optional.<nr>
+                            <ul>
+                                <li class="no-border"><i>username*</i>(string) user will be returned by its username</li>
                             </ul>
                         </p>
                         <h5>Response</h5>

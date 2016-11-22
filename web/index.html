@@ -1,16 +1,188 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+Giovanni Lenguito
+L010516C
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Parcel Delivery Web Service</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            .container{
+                width:90%;
+                margin: 0 auto;
+            }
+            *{
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                color: #222;
+            }
+            h5{
+                margin:0;
+                padding:0;
+            }
+            li{
+                padding:0.5em 0;
+                list-style:none;
+                margin:0;
+            }
+            ul{
+                padding:0;
+                margin:0;
+            }
+            .no-border{
+                border:none;
+                padding:0;
+                list-style: initial;
+                margin-left:1em;
+            }
+
+
+            button.accordion {
+                background-color: #b5d7e4;
+                color: #444;
+                cursor: pointer;
+                padding: 1em;
+                width: 100%;
+                text-align: left;
+                border: none;
+                outline: none;
+                transition: 0.4s;
+            }
+
+            button.accordion.active, button.accordion:hover {
+                background-color: #ddd;
+            }
+
+            div.panel {
+                padding: 1em;
+                display: none;
+                background: #f9f9f9;
+            }
+
+            div.panel.show {
+                display: block;
+            }
+        </style>
     </head>
     <body>
-        <div>TODO write content</div>
+        <div class="container">
+            <h1>Parcel Delivery System Web Service (PDS WSDL)</h1>
+            <h3>The latest WSDL may be found at <a href="http://localhost:8080/main/PDS?WSDL">http://localhost:8080/main/PDS?WSDL</a></h3>
+            <br>
+            <h4>Supported Operations</h4>
+            <ul>
+                <li>
+                    <button class="accordion"><h2><i>getUsers</i></h2></button>
+                    <div class="panel">
+                        <h5>Description</h5>
+                        <p>
+                            Returns all users (drivers and customers)
+                        </p>
+                        <h5>Parameters</h5>
+                        <p>
+                            All parameters must be supplied, but may be null. Parameters that may be null are marked optional.<nr>
+                            <ul>
+                                <li class="no-border"><i>type</i>(string, "driver" or "customer", or "NULL") the type will return all of users with the selected type, if NULL is passed all user types will be returned</li>
+                                <li class="no-border"><i>method</i>(string, "XML" or "JSON", or "NULL") returns either XML or JSON, NULL will default to XML</li>
+                            </ul>
+                        </p>
+                        <h5>Response</h5>
+                        <p>All users returned as method chosen (XML or JSON)</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="accordion"><h2><i>getUser</i></h2></button>
+                    <div class="panel">
+                        <h5>Description</h5>
+                        <p>
+                            Returns user by id (drivers or customers)
+                        </p>
+                        <h5>Parameters</h5>
+                        <p>
+                            All parameters must be supplied, but may be null. Parameters that may be null are marked optional.<nr>
+                            <ul>
+                                <li class="no-border"><i>id*</i>(int) user will be returned by its id</li>
+                                <li class="no-border"><i>method</i>(string, "XML" or "JSON", or "NULL") returns either XML or JSON, NULL will default to XML</li>
+                            </ul>
+                        </p>
+                        <h5>Response</h5>
+                        <p>User by id returned as method chosen (XML or JSON)</p>
+                    </div>
+                </li>
+                
+                <li>
+                    <button class="accordion"><h2><i>getCustomerParcels</i></h2></button>
+                    <div class="panel">
+                        <h5>Description</h5>
+                        <p>
+                            Returns all parcel by customer
+                        </p>
+                        <h5>Parameters</h5>
+                        <p>
+                            All parameters must be supplied, but may be null. Parameters that may be null are marked optional.<nr>
+                            <ul>
+                                <li class="no-border"><i>id*</i>(integer) Parcels will be returned by customer id</li>
+                                <li class="no-border"><i>method</i>(string, "XML" or "JSON", or "NULL") returns either XML or JSON, null will default to XML</li>
+                            </ul>
+                        </p>
+                        <h5>Response</h5>
+                        <p>Returns customer parcels as method chosen (XML or JSON)</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="accordion"><h2><i>getDriverParcels</i></h2></button>
+                    <div class="panel">
+                        <h5>Description</h5>
+                        <p>
+                            Returns all parcel by driver
+                        </p>
+                        <h5>Parameters</h5>
+                        <p>
+                            All parameters must be supplied, but may be null. Parameters that may be null are marked optional.<nr>
+                            <ul>
+                                <li class="no-border"><i>id*</i>(integer) Parcels will be returned by created by id (driver)</li>
+                                <li class="no-border"><i>method</i>(string, "XML" or "JSON", or "NULL") returns either XML or JSON, null will default to XML</li>
+                            </ul>
+                        </p>
+                        <h5>Response</h5>
+                        <p>Returns parcels by created by (driver) as method chosen (XML or JSON)</p>
+                    </div>
+                </li>
+                <li>
+                    <button class="accordion"><h2><i>getParcel</i></h2></button>
+                    <div class="panel">
+                        <h5>Description</h5>
+                        <p>
+                            Returns parcel by id
+                        </p>
+                        <h5>Parameters</h5>
+                        <p>
+                            All parameters must be supplied, but may be null. Parameters that may be null are marked optional.<nr>
+                            <ul>
+                                <li class="no-border"><i>id*</i>(integer) Parcel will be returned by its id</li>
+                                <li class="no-border"><i>method</i>(string, "XML" or "JSON", or "NULL") returns either XML or JSON, null will default to XML</li>
+                            </ul>
+                        </p>
+                        <h5>Response</h5>
+                        <p>Returns parcel by id as method chosen (XML or JSON)</p>
+                    </div>
+                </li>
+            </ul>
+            
+            <p><small>* Required parameters<br><small><i>Developed by Giovanni Lenguito</i></small></small></p>
+        </div>
+        <script>
+            var acc = document.getElementsByClassName("accordion");
+            var i;
+
+            for (i = 0; i < acc.length; i++) {
+                acc[i].onclick = function(){
+                    this.classList.toggle("active");
+                    this.nextElementSibling.classList.toggle("show");
+                }
+            }
+            
+        </script>
     </body>
 </html>

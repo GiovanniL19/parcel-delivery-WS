@@ -2,10 +2,7 @@ import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -15,11 +12,29 @@ import javax.ws.rs.core.Response;
 @Path("/parcels")
 public class Parcel{
 
+    @PUT
+    @Path("/update")
+    @Produces("application/json")
+    public Response updateParcel(String parcel) throws JSONException {
+        System.out.println("UPDATED");
+        System.out.println(parcel);
+        return Response.ok("Parcel Updated", MediaType.APPLICATION_JSON).build();
+    }
+
+    @POST
+    @Path("/new")
+    @Produces("application/json")
+    public Response newParcel(String parcel) throws JSONException {
+        System.out.println("CREATED");
+        System.out.println(parcel);
+        return Response.ok("Parcel Created", MediaType.APPLICATION_JSON).build();
+    }
+
     @GET
     @Path("/byCustomer/{id}")
     @Produces("application/json")
     public Response getParcelByCustomer(@PathParam("id") String id) throws JSONException {
-        if(id.equals("1")) {
+        if(id.equals("2")) {
             JSONArray parcels = new JSONArray();
 
             //HARD CODE JSON OBJECT

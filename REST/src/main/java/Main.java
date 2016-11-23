@@ -8,24 +8,24 @@ import java.io.IOException;
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
 import javax.ws.rs.Path;
+import javax.ws.rs.core.MediaType;
 
 /**
  * Created by giovannilenguito on 23/11/2016.
  */
-// The Java class will be hosted at the URI path "/"
 @Path("/")
 public class Main {
-    // The Java method will process HTTP GET requests
     @GET
-    // The Java method will produce content identified by the MIME Media type "text/json"
-    @Produces("application/json")
-    public String response() throws JSONException {
-        JSONObject json = new JSONObject();
-        json.put("id", "0");
-        json.put("username", "CharlotteD");
-        json.put("fullName", "Charlotte Dickinson");
-
-        return json.toString();
+    @Produces({MediaType.TEXT_HTML})
+    public String drivers() {
+        return "<html>" +
+                "<h4>Welcome to Parcel Delivery System REST Web Service</h4>" +
+                "<h4>/drivers</h4>" +
+                "<h4>/customers</h4>" +
+                "<h4>/parcels</h4>" +
+                "<h4>/logs</h4>" +
+                "<h4>/parcelStatus</h4>" +
+                "</html>";
     }
 
     public static void main(String[] args) throws IOException {

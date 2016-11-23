@@ -1,23 +1,23 @@
-import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import javax.ws.rs.*;
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by giovannilenguito on 23/11/2016.
  */
-@Path("/drivers")
-public class Driver {
+@Path("/customers")
+public class Customer {
 
     @GET
     @Produces({MediaType.TEXT_HTML})
-    public String drivers() {
+    public String customers() {
         return "<html>" +
                 "<h4>The endpoints are as follows:</h4>" +
                 "/byUsername/{username} (must pass String)<br>" +
@@ -29,30 +29,30 @@ public class Driver {
     @GET
     @Path("/byUsername/{username}")
     @Produces("application/json")
-    public Response getDriver(@PathParam("username") String username) throws JSONException {
-        if (username.equalsIgnoreCase("GiovanniL")) {
+    public Response getCustomer(@PathParam("username") String username) throws JSONException {
+        if (username.equalsIgnoreCase("CharlotteL")) {
 
             //HARD CODE JSON OBJECT
             JSONObject address = new JSONObject();
-            address.put("lineOne", "2 Close");
+            address.put("lineOne", "1 Close");
             address.put("lineTwo", "");
             address.put("city", "London");
             address.put("postcode", "L0 2DO");
             address.put("country", "United Kingdom");
 
             JSONObject user = new JSONObject();
-            user.put("id", "1");
-            user.put("type", "Driver");
-            user.put("username", "GiovanniL");
+            user.put("id", "2");
+            user.put("type", "Customer");
+            user.put("username", "CharlotteL");
             user.put("password", "123");
-            user.put("email", "gio@email.com");
-            user.put("fullName", "Giovanni Lenguito");
+            user.put("email", "char@email.com");
+            user.put("fullName", "Charlotte Lenguito");
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
             return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Driver not found").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
         }
     }
 
@@ -60,30 +60,30 @@ public class Driver {
     @GET
     @Path("/byID/{id}")
     @Produces("application/json")
-    public Response getDriverByID(@PathParam("id") String id) throws JSONException {
-        if (id.equalsIgnoreCase("1")) {
+    public Response getCustomerByID(@PathParam("id") String id) throws JSONException {
+        if (id.equalsIgnoreCase("2")) {
 
             //HARD CODE JSON OBJECT
             JSONObject address = new JSONObject();
-            address.put("lineOne", "2 Close");
+            address.put("lineOne", "1 Close");
             address.put("lineTwo", "");
             address.put("city", "London");
             address.put("postcode", "L0 2DO");
             address.put("country", "United Kingdom");
 
             JSONObject user = new JSONObject();
-            user.put("id", "1");
-            user.put("type", "Driver");
-            user.put("username", "GiovanniL");
+            user.put("id", "2");
+            user.put("type", "Customer");
+            user.put("username", "CharlotteL");
             user.put("password", "123");
-            user.put("email", "gio@email.com");
-            user.put("fullName", "Giovanni Lenguito");
+            user.put("email", "char@email.com");
+            user.put("fullName", "Charlotte Lenguito");
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
             return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
         } else {
-            return Response.status(Response.Status.NOT_FOUND).entity("Driver not found").build();
+            return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
         }
     }
 
@@ -95,22 +95,21 @@ public class Driver {
 
         //HARD CODE JSON OBJECT
         JSONObject address = new JSONObject();
-        address.put("lineOne", "2 Close");
+        address.put("lineOne", "1 Close");
         address.put("lineTwo", "");
         address.put("city", "London");
         address.put("postcode", "L0 2DO");
         address.put("country", "United Kingdom");
 
         JSONObject user = new JSONObject();
-        user.put("id", "1");
-        user.put("type", "Driver");
-        user.put("username", "GiovanniL");
+        user.put("id", "2");
+        user.put("type", "Customer");
+        user.put("username", "CharlotteL");
         user.put("password", "123");
-        user.put("email", "gio@email.com");
-        user.put("fullName", "Giovanni Lenguito");
+        user.put("email", "char@email.com");
+        user.put("fullName", "Charlotte Lenguito");
         user.put("contactNumber", "01234567890");
         user.put("address", address);
-
 
         users.put(user);
 

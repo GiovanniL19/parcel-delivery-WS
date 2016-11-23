@@ -114,7 +114,7 @@ public class Customer {
         users.put(user);
 
         if(users.length() > 0){
-            return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
+            return Response.ok(users.toString(), MediaType.APPLICATION_JSON).build();
         }else{
             return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
         }

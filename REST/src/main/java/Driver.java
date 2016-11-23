@@ -1,4 +1,3 @@
-import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -6,8 +5,6 @@ import org.codehaus.jettison.json.JSONObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * Created by giovannilenguito on 23/11/2016.

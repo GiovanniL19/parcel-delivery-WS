@@ -12,6 +12,14 @@ import javax.ws.rs.core.Response;
 @Path("/parcels")
 public class Parcel{
 
+    @DELETE
+    @Path("/delete/{id}")
+    @Produces("application/json")
+    public Response deleteParcel(@PathParam("id") String parcelID) throws JSONException {
+        System.out.println("DELETE PARCEL BY ID OF " + parcelID);
+        return Response.ok("Parcel Deleted", MediaType.APPLICATION_JSON).build();
+    }
+
     @PUT
     @Path("/update")
     @Produces("application/json")

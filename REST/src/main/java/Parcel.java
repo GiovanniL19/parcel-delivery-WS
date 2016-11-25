@@ -56,10 +56,10 @@ public class Parcel{
             address.put("country", "United Kingdom");
 
             JSONObject location = new JSONObject();
-            location.put("longitude" ,"53.0160257");
-            location.put("latitude", "-2.1792232");
+            location.put("longitude" ,"-2.1792232");
+            location.put("latitude", "53.0160257");
             location.put("parcelID", "0");
-            location.put("customerID", "0");
+            location.put("locationID", "0");
 
             JSONObject parcel = new JSONObject();
             parcel.put("id", "0");

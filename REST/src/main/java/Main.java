@@ -24,7 +24,7 @@ public class Main {
                 "<h4>/customers</h4>" +
                 "<h4>/parcels</h4>" +
                 "<h4>/logs</h4>" +
-                "<h4>/parcelStatus</h4>" +
+                "<h4>/locations</h4>" +
                 "</html>";
     }
 

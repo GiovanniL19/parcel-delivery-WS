@@ -21,6 +21,7 @@ public class Location {
     @PUT
     @Path("/update")
     @Produces("application/json")
+    @Consumes("application/json")
     public Response updateLocation(String location) throws JSONException {
         System.out.println("UPDATED");
         System.out.println(location);
@@ -30,6 +31,7 @@ public class Location {
     @POST
     @Path("/new")
     @Produces("application/json")
+    @Consumes("application/json")
     public Response newLocation(String location) throws JSONException {
         System.out.println("CREATED");
         System.out.println(location);

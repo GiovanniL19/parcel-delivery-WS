@@ -2,7 +2,6 @@ import com.google.gson.Gson;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -20,7 +19,6 @@ public class User {
     @POST
     @Path("/new")
     @Produces("application/json")
-    @Consumes("application/json")
     public Response postDriver(String driver) throws JSONException {
         try {
             Map jsonMap = new Gson().fromJson(driver, Map.class);

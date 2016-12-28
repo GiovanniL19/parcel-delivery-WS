@@ -12,7 +12,6 @@ public class Log {
     @POST
     @Path("/new")
     @Produces("application/json")
-    @Consumes("application/json")
     public Response newLog(String log) throws JSONException {
         System.out.println(log);
         //create log for user from username

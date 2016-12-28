@@ -23,7 +23,6 @@ public class Parcel{
 
     @PUT
     @Path("/update")
-    @Consumes("application/json")
     @Produces("application/json")
     public Response updateParcel(String parcel) throws JSONException {
         System.out.println("UPDATED");
@@ -33,7 +32,7 @@ public class Parcel{
 
     @POST
     @Path("/new")
-    @Consumes("application/json")
+    @Produces("application/json")
     public Response newParcel(String parcel) throws JSONException {
         System.out.println("CREATED");
         System.out.println(parcel);

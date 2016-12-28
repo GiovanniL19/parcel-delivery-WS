@@ -30,7 +30,7 @@ public class Customer {
     @Path("/byUsername/{username}")
     @Produces("application/json")
     public Response getCustomer(@PathParam("username") String username) throws JSONException {
-        if (username.equalsIgnoreCase("CharlotteL")) {
+        if (username.equalsIgnoreCase("CharlotteD")) {
 
             //HARD CODE JSON OBJECT
             JSONObject address = new JSONObject();
@@ -43,10 +43,10 @@ public class Customer {
             JSONObject user = new JSONObject();
             user.put("id", "2");
             user.put("type", "Customer");
-            user.put("username", "CharlotteL");
+            user.put("username", "CharlotteD");
             user.put("password", "123");
             user.put("email", "char@email.com");
-            user.put("fullName", "Charlotte Lenguito");
+            user.put("fullName", "Charlotte Dickinson");
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
@@ -104,10 +104,10 @@ public class Customer {
         JSONObject user = new JSONObject();
         user.put("id", "2");
         user.put("type", "Customer");
-        user.put("username", "CharlotteL");
+        user.put("username", "CharlotteD");
         user.put("password", "123");
         user.put("email", "char@email.com");
-        user.put("fullName", "Charlotte Lenguito");
+        user.put("fullName", "Charlotte Dickinson");
         user.put("contactNumber", "01234567890");
         user.put("address", address);
 

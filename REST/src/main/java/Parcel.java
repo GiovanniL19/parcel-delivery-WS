@@ -5,6 +5,9 @@ import org.codehaus.jettison.json.JSONObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.sql.DriverManager;
+import java.sql.Connection;
+import java.sql.SQLException;
 
 /**
  * Created by giovannilenguito on 23/11/2016.
@@ -194,6 +197,40 @@ public class Parcel{
     @Path("/all")
     @Produces("application/json")
     public Response getAllParcels() throws JSONException {
+        //Connect to database
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            System.out.println("\"Oracle JDBC Driver Success, now attempting connection");
+        }catch (ClassNotFoundException e) {
+            e.printStackTrace();
+            System.out.println("Unable to register class");
+        }
+
+
+        Connection connection = null;
+
+        try{
+            connection = DriverManager.getConnection("jdbc:oracle:thin:@crusstuora1.staffs.ac.uk:1521:stora","l010516c","L010516C");
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Unable to connect to database");
+        }
+
+        if (connection != null) {
+            System.out.println("Connection successful");
+        } else {
+            System.out.println("Failed to connect");
+        }
+
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connection failed to close");
+        }
+
         JSONArray parcels = new JSONArray();
 
         //HARD CODE JSON OBJECT

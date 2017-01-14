@@ -5,9 +5,9 @@ import org.codehaus.jettison.json.JSONObject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Random;
+import java.util.UUID;
 
 /**
  * Created by giovannilenguito on 23/11/2016.
@@ -64,6 +64,7 @@ public class Parcel{
             location.put("locationID", "0");
 
             JSONObject parcel = new JSONObject();
+            parcel.put("type", "Parcel");
             parcel.put("id", "0");
             parcel.put("createdByID", "1");
             parcel.put("customerID", "2");
@@ -114,6 +115,7 @@ public class Parcel{
             location.put("locationID", "0");
 
             JSONObject parcel = new JSONObject();
+            parcel.put("type", "Parcel");
             parcel.put("id", "0");
             parcel.put("createdByID", "1");
             parcel.put("customerID", "2");
@@ -132,6 +134,7 @@ public class Parcel{
             parcels.put(parcel);
 
             JSONObject parcel1 = new JSONObject();
+            parcel1.put("type", "Parcel");
             parcel1.put("id", "1");
             parcel1.put("createdByID", "1");
             parcel1.put("customerID", "2");
@@ -166,6 +169,7 @@ public class Parcel{
         if(id.equals(0)) {
             //HARD CODE JSON OBJECT
             JSONObject parcel = new JSONObject();
+            parcel.put("type", "Parcel");
             parcel.put("id", "0");
             parcel.put("createdByID", "1");
             parcel.put("customerID", "2");
@@ -196,7 +200,7 @@ public class Parcel{
     @GET
     @Path("/all")
     @Produces("application/json")
-    public Response getAllParcels() throws JSONException {
+    public Response getAllParcels() throws JSONException, SQLException {
         //Connect to database
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -220,15 +224,32 @@ public class Parcel{
 
         if (connection != null) {
             System.out.println("Connection successful");
+
+            Random id = new Random(System.currentTimeMillis());
+
+
+            String query = "INSERT INTO PARCELS (ID, RECIPIENTNAME, SERVICETYPE, CONTENTS, DATEBOOKED, DELIVERYDATE, ISDELIVERED, ISOUTFORDELIVERY, ISPROCESSING) VALUES ("+id+", 'Charlotte', 'First Class', 'Its a package', 123, 123, 0, 0, 1)";
+            Statement statement = connection.createStatement();
+
+            if(statement.execute(query)) {
+                ResultSet result = statement.getResultSet();
+
+                if(result.next()) {
+                    System.out.println("SUCCESS: " + result.getString(1));
+                } else {
+                    System.out.println("ERROR");
+                }
+
+                try {
+                    connection.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                    System.out.println("Connection failed to close");
+                }
+            }
+
         } else {
             System.out.println("Failed to connect");
-        }
-
-        try {
-            connection.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.out.println("Connection failed to close");
         }
 
         JSONArray parcels = new JSONArray();
@@ -242,6 +263,7 @@ public class Parcel{
         address.put("country", "United Kingdom");
 
         JSONObject parcel = new JSONObject();
+        parcel.put("type", "Parcel");
         parcel.put("id", "0");
         parcel.put("createdByID", "1");
         parcel.put("customerID", "2");

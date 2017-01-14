@@ -6,8 +6,6 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.sql.*;
-import java.util.Random;
-import java.util.UUID;
 
 /**
  * Created by giovannilenguito on 23/11/2016.
@@ -28,7 +26,7 @@ public class Parcel{
     @Path("/update")
     @Produces("application/json")
     public Response updateParcel(String parcel) throws JSONException {
-        System.out.println("UPDATED");
+        System.out.println("PARCEL UPDATED");
         System.out.println(parcel);
         return Response.ok("Parcel Updated", MediaType.APPLICATION_JSON).build();
     }
@@ -37,7 +35,7 @@ public class Parcel{
     @Path("/new")
     @Produces("application/json")
     public Response newParcel(String parcel) throws JSONException {
-        System.out.println("CREATED");
+        System.out.println("PARCEL CREATED");
         System.out.println(parcel);
         return Response.ok("Parcel Created", MediaType.APPLICATION_JSON).build();
     }
@@ -66,23 +64,71 @@ public class Parcel{
             JSONObject parcel = new JSONObject();
             parcel.put("type", "Parcel");
             parcel.put("id", "0");
-            parcel.put("createdByID", "1");
+            parcel.put("driverID", "1");
             parcel.put("customerID", "2");
-            parcel.put("recipientName", "Test");
+            parcel.put("recipientName", "Charlotte Dickinson");
             parcel.put("serviceType", "First Class Tracked");
             parcel.put("contents", "This parcel contains items, weighs about 1kg");
             parcel.put("dateBooked", "05/11/2016");
             parcel.put("deliveryDate", "15/11/2016");
-            parcel.put("isDelivered", false);
+            parcel.put("isDelivered", true);
             parcel.put("isOutForDelivery", false);
-            parcel.put("isProcessing", true);
+            parcel.put("isProcessing", false);
             parcel.put("image", image);
             parcel.put("address", address);
             parcel.put("location", location);
 
+            parcel.put("collectionLineOne", "1 Close");
+            parcel.put("collectionPostcode", "L0 2DO");
+
             parcels.put(parcel);
 
+            JSONObject parcel2 = new JSONObject();
+            parcel2.put("type", "Parcel");
+            parcel2.put("id", "1");
+            parcel2.put("driverID", "1");
+            parcel2.put("customerID", "2");
+            parcel2.put("recipientName", "Charlotte Dickinson");
+            parcel2.put("serviceType", "Second Class Tracked");
+            parcel2.put("contents", "This parcel contains items, weighs about 2kg");
+            parcel2.put("dateBooked", "05/01/2017");
+            parcel2.put("deliveryDate", "15/01/2017");
+            parcel2.put("isDelivered", false);
+            parcel2.put("isOutForDelivery", true);
+            parcel2.put("isProcessing", false);
+            parcel2.put("image", image);
+            parcel2.put("address", address);
+            parcel2.put("location", location);
+
+            parcel2.put("collectionLineOne", "1 Close");
+            parcel2.put("collectionPostcode", "L0 2DO");
+
+            parcels.put(parcel2);
+
+            JSONObject parcel3 = new JSONObject();
+            parcel3.put("type", "Parcel");
+            parcel3.put("id", "2");
+            parcel3.put("driverID", "1");
+            parcel3.put("customerID", "2");
+            parcel3.put("recipientName", "Charlotte Dickinson");
+            parcel3.put("serviceType", "Second Class");
+            parcel3.put("contents", "This parcel contains items, weighs about 3kg");
+            parcel3.put("dateBooked", "12/01/2017");
+            parcel3.put("deliveryDate", "24/01/2017");
+            parcel3.put("isDelivered", false);
+            parcel3.put("isOutForDelivery", false);
+            parcel3.put("isProcessing", true);
+            parcel3.put("image", image);
+            parcel3.put("address", address);
+            parcel3.put("location", location);
+
+            parcel3.put("collectionLineOne", "1 Close");
+            parcel3.put("collectionPostcode", "L0 2DO");
+
+            parcels.put(parcel3);
+
             if(parcels.length() > 0){
+                System.out.println("Got parcels by customer");
                 return Response.ok(parcels.toString(), MediaType.APPLICATION_JSON).build();
             }else{
                 return Response.status(Response.Status.NOT_FOUND).entity("Parcels not found").build();
@@ -102,10 +148,11 @@ public class Parcel{
             JSONArray parcels = new JSONArray();
 
             JSONObject address = new JSONObject();
-            address.put("lineOne", "2 Close");
+
+            address.put("lineOne", "221B Baker Street");
             address.put("lineTwo", "");
             address.put("city", "London");
-            address.put("postcode", "L0 2DO");
+            address.put("postcode", "L2 21B");
             address.put("country", "United Kingdom");
 
             JSONObject location = new JSONObject();
@@ -117,42 +164,72 @@ public class Parcel{
             JSONObject parcel = new JSONObject();
             parcel.put("type", "Parcel");
             parcel.put("id", "0");
-            parcel.put("createdByID", "1");
+            parcel.put("driverID", "1");
             parcel.put("customerID", "2");
-            parcel.put("recipientName", "Test");
+            parcel.put("recipientName", "Charlotte Dickinson");
             parcel.put("serviceType", "First Class Tracked");
             parcel.put("contents", "This parcel contains items, weighs about 1kg");
             parcel.put("dateBooked", "05/11/2016");
             parcel.put("deliveryDate", "15/11/2016");
-            parcel.put("isDelivered", false);
+            parcel.put("isDelivered", true);
             parcel.put("isOutForDelivery", false);
-            parcel.put("isProcessing", true);
+            parcel.put("isProcessing", false);
             parcel.put("image", image);
             parcel.put("address", address);
             parcel.put("location", location);
 
+            parcel.put("collectionLineOne", "1 Close");
+            parcel.put("collectionPostcode", "L0 2DO");
+
             parcels.put(parcel);
 
-            JSONObject parcel1 = new JSONObject();
-            parcel1.put("type", "Parcel");
-            parcel1.put("id", "1");
-            parcel1.put("createdByID", "1");
-            parcel1.put("customerID", "2");
-            parcel1.put("recipientName", "Test 2");
-            parcel1.put("serviceType", "Second Class Tracked");
-            parcel1.put("contents", "This parcel contains an item, weighs about 0..5kg");
-            parcel1.put("dateBooked", "10/11/2016");
-            parcel1.put("deliveryDate", "25/11/2016");
-            parcel1.put("isDelivered", false);
-            parcel1.put("isOutForDelivery", true);
-            parcel1.put("isProcessing", false);
-            parcel1.put("image", "");
-            parcel1.put("address", address);
-            parcel1.put("location", location);
+            JSONObject parcel2 = new JSONObject();
+            parcel2.put("type", "Parcel");
+            parcel2.put("id", "1");
+            parcel2.put("driverID", "1");
+            parcel2.put("customerID", "2");
+            parcel2.put("recipientName", "Charlotte Dickinson");
+            parcel2.put("serviceType", "Second Class Tracked");
+            parcel2.put("contents", "This parcel contains items, weighs about 2kg");
+            parcel2.put("dateBooked", "05/01/2017");
+            parcel2.put("deliveryDate", "15/01/2017");
+            parcel2.put("isDelivered", false);
+            parcel2.put("isOutForDelivery", true);
+            parcel2.put("isProcessing", false);
+            parcel2.put("image", image);
+            parcel2.put("address", address);
+            parcel2.put("location", location);
 
-            parcels.put(parcel1);
+            parcel2.put("collectionLineOne", "1 Close");
+            parcel2.put("collectionPostcode", "L0 2DO");
+
+            parcels.put(parcel2);
+
+            JSONObject parcel3 = new JSONObject();
+            parcel3.put("type", "Parcel");
+            parcel3.put("id", "2");
+            parcel3.put("driverID", "1");
+            parcel3.put("customerID", "2");
+            parcel3.put("recipientName", "Charlotte Dickinson");
+            parcel3.put("serviceType", "Second Class");
+            parcel3.put("contents", "This parcel contains items, weighs about 3kg");
+            parcel3.put("dateBooked", "12/01/2017");
+            parcel3.put("deliveryDate", "24/01/2017");
+            parcel3.put("isDelivered", false);
+            parcel3.put("isOutForDelivery", false);
+            parcel3.put("isProcessing", true);
+            parcel3.put("image", image);
+            parcel3.put("address", address);
+            parcel3.put("location", location);
+
+            parcel3.put("collectionLineOne", "1 Close");
+            parcel3.put("collectionPostcode", "L0 2DO");
+
+            parcels.put(parcel3);
+
 
             if(parcels.length() > 0){
+                System.out.println("Got parcels by created by id");
                 return Response.ok(parcels.toString(), MediaType.APPLICATION_JSON).build();
             }else{
                 return Response.status(Response.Status.NOT_FOUND).entity("Parcels not found").build();
@@ -171,7 +248,7 @@ public class Parcel{
             JSONObject parcel = new JSONObject();
             parcel.put("type", "Parcel");
             parcel.put("id", "0");
-            parcel.put("createdByID", "1");
+            parcel.put("driverID", "1");
             parcel.put("customerID", "2");
             parcel.put("recipientName", "Test");
             parcel.put("serviceType", "First Class Tracked");
@@ -190,7 +267,7 @@ public class Parcel{
             address.put("country", "United Kingdom");
 
             parcel.put("address", address);
-
+            System.out.println("Get parcels by id");
             return Response.ok(parcel.toString(), MediaType.APPLICATION_JSON).build();
         }else{
             return Response.status(Response.Status.NOT_FOUND).entity("Parcel not found with id of " + id).build();
@@ -224,33 +301,18 @@ public class Parcel{
 
         if (connection != null) {
             System.out.println("Connection successful");
-
-            Random id = new Random(System.currentTimeMillis());
-
-
-            String query = "INSERT INTO PARCELS (ID, RECIPIENTNAME, SERVICETYPE, CONTENTS, DATEBOOKED, DELIVERYDATE, ISDELIVERED, ISOUTFORDELIVERY, ISPROCESSING) VALUES ("+id+", 'Charlotte', 'First Class', 'Its a package', 123, 123, 0, 0, 1)";
-            Statement statement = connection.createStatement();
-
-            if(statement.execute(query)) {
-                ResultSet result = statement.getResultSet();
-
-                if(result.next()) {
-                    System.out.println("SUCCESS: " + result.getString(1));
-                } else {
-                    System.out.println("ERROR");
-                }
-
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                    System.out.println("Connection failed to close");
-                }
-            }
-
         } else {
             System.out.println("Failed to connect");
         }
+
+
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Connection failed to close");
+        }
+
 
         JSONArray parcels = new JSONArray();
 
@@ -265,7 +327,7 @@ public class Parcel{
         JSONObject parcel = new JSONObject();
         parcel.put("type", "Parcel");
         parcel.put("id", "0");
-        parcel.put("createdByID", "1");
+        parcel.put("driverID", "1");
         parcel.put("customerID", "2");
         parcel.put("recipientName", "Test");
         parcel.put("serviceType", "First Class Tracked");
@@ -280,6 +342,7 @@ public class Parcel{
         parcels.put(parcel);
 
         if(parcels.length() > 0){
+            System.out.println("Got all parcels");
             return Response.ok(parcels.toString(), MediaType.APPLICATION_JSON).build();
         }else{
             return Response.status(Response.Status.NOT_FOUND).entity("Parcels not found").build();

@@ -57,8 +57,8 @@ public class User {
             user.put("contactNumber", contactNumber);
             user.put("address", addressJ);
 
-            System.out.println("User post made successfully");
             System.out.println(user.toString());
+            System.out.println("User post made successfully");
             return Response.ok(id, MediaType.APPLICATION_JSON).build();
         } catch (Exception e) {
             e.printStackTrace();

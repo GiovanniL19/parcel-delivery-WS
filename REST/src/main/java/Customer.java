@@ -50,6 +50,7 @@ public class Customer {
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
+            System.out.println("Got Customer by username");
             return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
@@ -81,6 +82,7 @@ public class Customer {
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
+            System.out.println("Got Customer by id");
             return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
@@ -113,7 +115,28 @@ public class Customer {
 
         users.put(user);
 
+        //HARD CODE JSON OBJECT
+        JSONObject address2 = new JSONObject();
+        address2.put("lineOne", "32 Street");
+        address2.put("lineTwo", "");
+        address2.put("city", "Stoke");
+        address2.put("postcode", "ST1 2NE");
+        address2.put("country", "United Kingdom");
+
+        JSONObject user2 = new JSONObject();
+        user2.put("id", "3");
+        user2.put("type", "Customer");
+        user2.put("username", "TestUser");
+        user2.put("password", "123");
+        user2.put("email", "test@email.com");
+        user2.put("fullName", "John Smith");
+        user2.put("contactNumber", "01234567890");
+        user2.put("address", address2);
+
+        users.put(user2);
+
         if(users.length() > 0){
+            System.out.println("Got all Customers");
             return Response.ok(users.toString(), MediaType.APPLICATION_JSON).build();
         }else{
             return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();

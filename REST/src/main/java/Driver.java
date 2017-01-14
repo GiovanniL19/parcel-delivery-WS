@@ -47,6 +47,8 @@ public class Driver {
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
+            System.out.println("Got Driver by username");
+
             return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity("Driver not found").build();
@@ -78,6 +80,7 @@ public class Driver {
             user.put("contactNumber", "01234567890");
             user.put("address", address);
 
+            System.out.println("Got Driver by id of 1");
             return Response.ok(user.toString(), MediaType.APPLICATION_JSON).build();
         } else {
             return Response.status(Response.Status.NOT_FOUND).entity("Driver not found").build();
@@ -87,7 +90,7 @@ public class Driver {
     @GET
     @Path("/all")
     @Produces("application/json")
-    public Response getAllCustomers() throws JSONException {
+    public Response getAllDrivers() throws JSONException {
         JSONArray users = new JSONArray();
 
         //HARD CODE JSON OBJECT
@@ -109,6 +112,7 @@ public class Driver {
         user.put("address", address);
 
 
+        System.out.println("Gotten all drivers");
         users.put(user);
 
         if(users.length() > 0){
@@ -117,4 +121,41 @@ public class Driver {
             return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
         }
     }
+
+    @GET
+    @Path("/random")
+    @Produces("application/json")
+    public Response getRandomDriver() throws JSONException {
+        JSONArray users = new JSONArray();
+
+        //HARD CODE JSON OBJECT
+        JSONObject address = new JSONObject();
+        address.put("lineOne", "2 Close");
+        address.put("lineTwo", "");
+        address.put("city", "London");
+        address.put("postcode", "L0 2DO");
+        address.put("country", "United Kingdom");
+
+        JSONObject user = new JSONObject();
+        user.put("id", "1");
+        user.put("type", "Driver");
+        user.put("username", "GiovanniL");
+        user.put("password", "123");
+        user.put("email", "gio@email.com");
+        user.put("fullName", "Giovanni Lenguito");
+        user.put("contactNumber", "01234567890");
+        user.put("address", address);
+
+        System.out.println("Gotten all drivers");
+        users.put(user);
+
+        if(users.length() > 0){
+            int randomIndex = (int)(Math.random() * ((users.length() - 0)));
+
+            return Response.ok(users.get(randomIndex).toString(), MediaType.APPLICATION_JSON).build();
+        }else{
+            return Response.status(Response.Status.NOT_FOUND).entity("Customers not found").build();
+        }
+    }
+
 }

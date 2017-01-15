@@ -139,9 +139,9 @@ public class Parcel{
     }
 
     @GET
-    @Path("/byCreatedId/{id}")
+    @Path("/byDriver/{id}")
     @Produces("application/json")
-    public Response getParcelByCreated(@PathParam("id") String id) throws JSONException {
+    public Response getParcelByDriver(@PathParam("id") String id) throws JSONException {
         System.out.println(id);
         System.out.println("ENDPOINT HIT");
         if(id.equals("1")) {
@@ -227,9 +227,34 @@ public class Parcel{
 
             parcels.put(parcel3);
 
+            /*
+            JSONObject parcel4 = new JSONObject();
+            parcel4.put("type", "Parcel");
+            parcel4.put("id", "2");
+            parcel4.put("driverID", "1");
+            parcel4.put("customerID", "2");
+            parcel4.put("recipientName", "Charlotte Dickinson");
+            parcel4.put("serviceType", "Second Class");
+            parcel4.put("contents", "This parcel contains items, weighs about 3kg");
+            parcel4.put("dateBooked", "12/01/2017");
+            parcel4.put("deliveryDate", "24/01/2017");
+            parcel4.put("isDelivered", false);
+            parcel4.put("isOutForDelivery", false);
+            parcel4.put("isProcessing", true);
+            parcel4.put("image", image);
+            parcel4.put("address", address);
+            parcel4.put("location", location);
+
+            parcel4.put("collectionLineOne", "1 Close");
+            parcel4.put("collectionPostcode", "L0 2DO");
+
+            parcels.put(parcel4);
+
+            //*/
+
 
             if(parcels.length() > 0){
-                System.out.println("Got parcels by created by id");
+                System.out.println("Got parcels by driver by id");
                 return Response.ok(parcels.toString(), MediaType.APPLICATION_JSON).build();
             }else{
                 return Response.status(Response.Status.NOT_FOUND).entity("Parcels not found").build();

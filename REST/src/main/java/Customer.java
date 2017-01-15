@@ -29,7 +29,7 @@ public class Customer {
     @GET
     @Path("/byUsername/{username}")
     @Produces("application/json")
-    public Response getCustomer(@PathParam("username") String username) throws JSONException {
+    public Response getCustomerByUsername(@PathParam("username") String username) throws JSONException {
         if (username.equalsIgnoreCase("CharlotteD")) {
 
             //HARD CODE JSON OBJECT
